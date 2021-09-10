@@ -1,0 +1,66 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block breadcrumbItem %} 
+    <li class="breadcrumb-item active">Member Detail</li>
+{% endblock %}
+{% block content %} 
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-5">
+          <div class="card card-success card-outline">
+            <div class="card-header">
+              <h3 class="card-title">{{member.name}}</h3>
+                <div class="card-tools">
+                    <button
+                    type="button"
+                    class="btn btn-outline-success"
+                    >
+                        <i class="fas fa-edit"></i> Modifier
+                    </button>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body box-profile">
+                <div class="text-center">
+                    <img
+                        class="img-fluid"
+                        src="/media/{{member.qr_code}}"
+                    />
+                </div>
+                <div>
+                    <ul class="list-group list-group-unbordered mb-3">
+                        <li class="list-group-item">
+                        <b>Mail</b>
+                        <a class="float-right">{{ member.mail }}</a>
+                        </li>
+                        <li class="list-group-item">
+                        <b>Address</b>
+                        <a class="float-right">{{ member.address }}</a>
+                        </li>
+                        <li class="list-group-item">
+                        <b>Phone Number</b>
+                        <a class="float-right">{{ member.phoneNumber }}</a>
+                        </li>
+                        <li class="list-group-item">
+                        <div class="text-center">
+                            <img
+                                class="img-fluid"
+                                src="/media/{{member.barcodeImg}}"
+                            />
+                        </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+        </div>
+        <div class="col-7" id="memberManagement">
+          <subscription v-bind:member={{member.id}}></subscription>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+{% block javascripts %} 
+    <script type="text/javascript" src="{% static 'src/vue/dist/js/memberManagement.js' %}"></script>
+{% endblock %}

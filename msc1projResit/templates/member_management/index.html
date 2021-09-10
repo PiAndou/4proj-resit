@@ -1,0 +1,13 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block breadcrumbItem %} 
+    <li class="breadcrumb-item active">Members</li>
+{% endblock %}
+{% block content %} 
+    <div id="memberManagement">
+        <member></member>
+    </div>
+{% endblock %}
+{% block javascripts %} 
+    <script type="text/javascript" src="{% static 'src/vue/dist/js/memberManagement.js' %}"></script>
+{% endblock %}

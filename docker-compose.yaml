@@ -1,0 +1,29 @@
+version: "3.9"
+   
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+      - ./forma-green.sql:/docker-entrypoint-initdb.d/forma-green.sql
+    environment:
+      - POSTGRES_DB=forma-green
+      - POSTGRES_USER=forma-green-user
+      - POSTGRES_PASSWORD=passerformagreenuser
+    networks:
+      - forma-green-network
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    networks:
+      - forma-green-network
+    depends_on:
+      - db
+
+networks:
+  forma-green-network:
+    driver: bridge

@@ -1,0 +1,15 @@
+{% extends "../base.html" %}
+{% load static %}
+{% block breadcrumbItem %} 
+    <li class="breadcrumb-item active">Green Areas</li>
+{% endblock %}
+
+{% block content %} 
+    <div id="greenSpaces">
+        <greenspace></greenspace>
+    </div>
+{% endblock %}
+{% block javascripts %} 
+    <script type="text/javascript" src="{% static 'src/vue/dist/js/greenSpaceManagement.js' %}"></script>
+{% endblock %}
+
