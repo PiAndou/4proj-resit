@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.views.decorators.csrf import csrf_exempt
 from graphene_django.views import GraphQLView
+from django.views.static import serve
 
 from home.views import home, login_request, logout_request
 
@@ -30,8 +31,11 @@ urlpatterns = [
     path('logout', logout_request, name='logout'),
     path('member_management/', include('memberManagement.urls')),
     path('green_areas/', include('greenAreaManagement.urls')),
-    path('partners/', include('partnershipManagement.urls')),
+    path('partners/', include('partnershipManagement.urls'))
 ]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+
+urlpatterns += static(settings.MEDIA_URL,
+                      document_root=settings.MEDIA_ROOT)
+if not settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL,
+                          document_root=settings.STATIC_ROOT)
