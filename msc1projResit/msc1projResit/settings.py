@@ -84,7 +84,7 @@ DATABASES = {
         'NAME': 'forma-green',
         'USER': 'forma-green-user',
         'PASSWORD': 'passerformagreenuser',
-        'HOST': '127.0.0.1',
+        'HOST': 'formagreen-db',
         'PORT': '5432',
     }
 }

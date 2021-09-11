@@ -1,7 +1,7 @@
 version: "3.9"
    
 services:
-  db:
+  formagreen-db:
     image: postgres
     volumes:
       - ./data/db:/var/lib/postgresql/data
@@ -13,7 +13,7 @@ services:
     networks:
       - forma-green-network
   web:
-    image: msc1projresit-311560
+    image: formagreen:latest
     command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "8000:8000"
