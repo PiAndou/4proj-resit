@@ -20,7 +20,7 @@ services:
     networks:
       - forma-green-network
     depends_on:
-      - db
+      - formagreen-db
 
 networks:
   forma-green-network:
