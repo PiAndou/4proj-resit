@@ -26,7 +26,7 @@ from home.views import home, login_request, logout_request
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("graphql", csrf_exempt(GraphQLView.as_view(graphiql=True))),
+    path("graphql", csrf_exempt(GraphQLView.as_view(graphiql=False))),
     path('', home, name='home'),
     path('login', login_request, name='login'),
     path('logout', logout_request, name='logout'),
