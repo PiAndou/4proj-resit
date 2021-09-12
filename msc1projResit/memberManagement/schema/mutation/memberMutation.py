@@ -82,7 +82,7 @@ class UpdateMember(graphene.Mutation):
     @classmethod
     def mutate(cls, root, info, memberID, name, phoneNumber, address, mail):
         try:
-            member = Member.objects.get(pk=memberID, mail=mail)
+            member = Member.objects.get(pk=memberID)
             member.name = name
             member.phoneNumber = phoneNumber
             member.address = address
