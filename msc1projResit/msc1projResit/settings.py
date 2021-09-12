@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-f^xu_%c__yhpd6i&z*=3(2-67nl_$71mcn&*%bq)g7u-&udn53'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -76,16 +76,28 @@ WSGI_APPLICATION = 'msc1projResit.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'forma-green',
-        'USER': 'forma-green-user',
-        'PASSWORD': 'passerformagreenuser',
-        'HOST': 'formagreen-db',
-        'PORT': '5432',
+if not DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'forma-green',
+            'USER': 'forma-green-user',
+            'PASSWORD': 'passerformagreenuser',
+            'HOST': 'formagreen-db',
+            'PORT': '5432',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'forma-green',
+            'USER': 'forma-green-user',
+            'PASSWORD': 'passerformagreenuser',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
